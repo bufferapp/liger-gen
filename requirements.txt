@@ -1,0 +1,5 @@
+git+https://github.com/zzzeek/sqlalchemy
+git+https://github.com/bufferapp/rsdf
+git+https://github.com/michael-erasmus/lookml-gen
+inflection
+click
