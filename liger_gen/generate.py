@@ -9,6 +9,7 @@ class LigerView:
     def __init__(self, table):
         self.table = table
         self.table_name = self.table.name
+        self.full_table_name = '{}.{}'.format(self.table.schema, self.table_name)
         self.entity_name = humanize(self.table_name).lower()
         self.format_options = GeneratorFormatOptions(view_fields_alphabetical=False,
                                omit_default_field_type=False,
@@ -17,7 +18,7 @@ class LigerView:
         self.__init_view()
 
     def __init_view(self):
-        self.view = View(self.table_name, sql_table_name=self.table_name)
+        self.view = View(self.table_name, sql_table_name=self.full_table_name)
 
     def __map_column_type(self, sql_type):
         if 'BOOLEAN' in str(sql_type):

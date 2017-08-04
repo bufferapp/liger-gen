@@ -5,8 +5,9 @@ from liger_gen.generate import LigerView
 import click
 @click.command()
 @click.argument('table_name')
-def generate(table_name):
-    table = get_table_metadata(table_name)
+@click.option('--schema',default='dbt')
+def generate(table_name, schema):
+    table = get_table_metadata(table_name, schema)
     l = LigerView(table)
     l.generate_lookml(sys.stdout)
 
